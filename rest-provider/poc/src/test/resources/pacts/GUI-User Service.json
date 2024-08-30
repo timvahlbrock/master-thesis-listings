@@ -1,0 +1,59 @@
+{
+  "consumer": {
+    "name": "GUI"
+  },
+  "interactions": [
+    {
+      "description": "a request for the user",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "there is a user"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/users/9a9845c4-8a46-4bf9-89a5-ecd3c3b66479"
+      },
+      "response": {
+        "body": {
+          "content": {
+            "firstName": "Jane",
+            "groups": [
+              {
+                "id": "1f2a451b-843c-4e6a-904d-fbee06dc61d7",
+                "isAdmin": false
+              }
+            ],
+            "id": "9a9845c4-8a46-4bf9-89a5-ecd3c3b66479",
+            "lastName": "Appleseed"
+          },
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "status": 200
+      },
+      "type": "Synchronous/HTTP"
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "13.1.2"
+    },
+    "pactRust": {
+      "ffi": "0.4.22",
+      "models": "1.2.3"
+    },
+    "pactSpecification": {
+      "version": "4.0"
+    }
+  },
+  "provider": {
+    "name": "User Service"
+  }
+}

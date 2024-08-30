@@ -1,0 +1,12 @@
+{
+	"scripts": {
+		"test": "vitest run",
+		"copyContracts": "bash ./copyContracts.sh"
+	},
+	"dependencies": {
+		"@pact-foundation/pact": "^13.1.2"
+	},
+	"devDependencies": {
+		"vitest": "^2.0.5"
+	}
+}

@@ -1,0 +1,1 @@
+cp pacts/* ../../rest-provider/final/src/test/resources/pacts

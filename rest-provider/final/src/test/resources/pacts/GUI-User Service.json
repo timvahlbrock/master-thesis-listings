@@ -1,0 +1,118 @@
+{
+  "consumer": {
+    "name": "GUI"
+  },
+  "interactions": [
+    {
+      "description": "a request for the user",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "there is a user",
+          "params": {
+            "id": "9a9845c4-8a46-4bf9-89a5-ecd3c3b66479"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/users/9a9845c4-8a46-4bf9-89a5-ecd3c3b66479"
+      },
+      "response": {
+        "body": {
+          "content": {
+            "firstName": "some string",
+            "groups": [
+              {
+                "id": "4aef2a66-d725-4664-a13b-309e7b6096aa",
+                "isAdmin": true
+              }
+            ],
+            "id": "9a9845c4-8a46-4bf9-89a5-ecd3c3b66479",
+            "lastName": "some string"
+          },
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$.firstName": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.groups": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 1
+                }
+              ]
+            },
+            "$.groups[*].id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+                }
+              ]
+            },
+            "$.groups[*].isAdmin": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+                }
+              ]
+            },
+            "$.lastName": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "status": {}
+        },
+        "status": 200
+      },
+      "type": "Synchronous/HTTP"
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "13.1.2"
+    },
+    "pactRust": {
+      "ffi": "0.4.22",
+      "models": "1.2.3"
+    },
+    "pactSpecification": {
+      "version": "4.0"
+    }
+  },
+  "provider": {
+    "name": "User Service"
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "consumer": {
+    "name": "User Service"
+  },
+  "interactions": [
+    {
+      "comments": {
+        "testname": "org.example.eventconsumer.contracts.UserCreationConsumerTests.userCreationMessageMessageTest(List)"
+      },
+      "contents": {
+        "content": {
+          "id": "e2490de5-5bd3-43d5-b7c4-526e33f71304",
+          "initiator": "string",
+          "password": "string",
+          "type": "credentialsUserMessage",
+          "username": "string"
+        },
+        "contentType": "application/json",
+        "encoded": false
+      },
+      "description": "A CredentialsUserMessage",
+      "generators": {
+        "body": {
+          "$.id": {
+            "type": "Uuid"
+          },
+          "$.initiator": {
+            "size": 20,
+            "type": "RandomString"
+          },
+          "$.password": {
+            "size": 20,
+            "type": "RandomString"
+          },
+          "$.username": {
+            "size": 20,
+            "type": "RandomString"
+          }
+        }
+      },
+      "key": "",
+      "matchingRules": {
+        "body": {
+          "$.id": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "regex",
+                "regex": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+              }
+            ]
+          },
+          "$.initiator": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          },
+          "$.password": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          },
+          "$.type": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "equality"
+              }
+            ]
+          },
+          "$.username": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          }
+        }
+      },
+      "metadata": {
+        "contentType": "application/json"
+      },
+      "pending": false,
+      "type": "Asynchronous/Messages"
+    },
+    {
+      "comments": {
+        "testname": "org.example.eventconsumer.contracts.UserCreationConsumerTests.userCreationMessageMessageTest(List)"
+      },
+      "contents": {
+        "content": {
+          "id": "e2490de5-5bd3-43d5-b7c4-526e33f71304",
+          "initiator": "string",
+          "type": "ldapUserMessage",
+          "userId": "string"
+        },
+        "contentType": "application/json",
+        "encoded": false
+      },
+      "description": "An LdapUserMessage",
+      "generators": {
+        "body": {
+          "$.id": {
+            "type": "Uuid"
+          },
+          "$.initiator": {
+            "size": 20,
+            "type": "RandomString"
+          },
+          "$.userId": {
+            "size": 20,
+            "type": "RandomString"
+          }
+        }
+      },
+      "key": "",
+      "matchingRules": {
+        "body": {
+          "$.id": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "regex",
+                "regex": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+              }
+            ]
+          },
+          "$.initiator": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          },
+          "$.type": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "equality"
+              }
+            ]
+          },
+          "$.userId": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          }
+        }
+      },
+      "metadata": {
+        "contentType": "application/json"
+      },
+      "pending": false,
+      "type": "Asynchronous/Messages"
+    }
+  ],
+  "metadata": {
+    "pact-jvm": {
+      "version": "4.6.9"
+    },
+    "pactSpecification": {
+      "version": "4.0"
+    }
+  },
+  "provider": {
+    "name": "User Creation Publisher"
+  }
+}
